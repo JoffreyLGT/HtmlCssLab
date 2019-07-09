@@ -1,3 +1,6 @@
 - Afficher les notes dans des composants sur le droite.
 Insérer un bouton "modifier" pour que le composant passe en mode validation et affiche le contenu dans un formulaire avec un bouton enregistrer.
 Lors d'un clique sur enregistrer, on repasse en mode consultation et MAJ le tout.
+
+
+- Quelle est la différence entre une fonction et une fonction flèchée ?
