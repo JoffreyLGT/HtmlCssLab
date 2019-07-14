@@ -8,6 +8,26 @@ class TableComponent extends HTMLElement {
     this.render();
   }
 
+  get onClick() {
+    return this._onclick;
+  }
+
+  set onClick(callback) {
+    this._onclick = callback;
+    this.shadowRoot.querySelector('style').innerHTML += `
+      td{
+        cursor: pointer;
+      }
+    `;
+    const trList = this.shadowRoot.querySelectorAll('tr');
+    for (let i = 1; i < trList.length; i++) {
+      const tdList = trList[i].querySelectorAll('td');
+      for (let j = 0; j < tdList.length; j++) {
+        tdList[j].addEventListener('click', () => this._onclick(i, j));
+      }
+    }
+  }
+
   // Called when the element is constructed
   constructor() {
     super();
