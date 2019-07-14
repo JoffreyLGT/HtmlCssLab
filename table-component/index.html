@@ -10,8 +10,16 @@
 
 <body>
   <div style="width: 500px">
+    <h4>Table header</h4>
+    <table-component id="my-table-with-header" hasHeader="true"></table-component>
+  </div>
+
+  <div style="width: 500px">
+    <h4>Table without header</h4>
     <table-component id="my-table"></table-component>
   </div>
+
+
   <script src="./TableComponent.js"></script>
 
   <script defer>
@@ -21,7 +29,8 @@
       ['Elena', 'Azrowitch', '1990-01-30'],
       ['Jean-Michel', 'Dupond', '1987-12-22'],
     ];
-    document.getElementById("my-table").values = array;
+    document.getElementById("my-table").values = array.map(v => v).splice(1, array.length);
+    document.getElementById("my-table-with-header").values = array;
   </script>
 </body>
 

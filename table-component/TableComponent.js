@@ -13,25 +13,55 @@ class TableComponent extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this._values = [];
+    this._hasHeader = this.getAttribute("hasHeader");
   }
 
   render() {
     const values = this._values.map(value => value);
-    let header = values[0].reduce((result, col) => { return result += `<th>${col}</th>` }, '');
+    let firstValuePosition = 0;
+    let header = '';
+    if (this._hasHeader) {
+      let headerValues = values[0].reduce((result, col) => { return result += `<th>${col}</th>` }, '');
+      header = `<thead><tr>${headerValues}</tr></thead>`;
+      firstValuePosition = 1;
+    }
+
     let body = '';
-    for (let i = 1; i < values.length; i++) {
+    for (let i = firstValuePosition; i < values.length; i++) {
       const line = values[i];
       body += '<tr>';
       line.forEach(col => body += `<td>${col}</td>`)
       body += '</tr>';
     }
+
     this.shadowRoot.innerHTML = `
+      <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        thead th {
+          border-top: 1px solid lightgray;
+          border-bottom: 2px solid lightgray;
+          text-align: left;
+        }
+        
+        th, td {
+          padding: 5px;
+          border-top: 1px solid lightgray;
+        }
+        
+        tbody tr:hover {
+          background: rgb(220, 220, 220, 0.3);
+        }
+        
+        tbody tr:first-child td {
+          border-top: none;
+        }
+      </style>
       <table>
-      <thead>
-        <tr>
-          ${header}
-        </tr>
-      </thead >
+        ${header}
         <tbody>
           ${body}
         </tbody>
