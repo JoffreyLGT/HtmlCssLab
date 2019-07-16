@@ -22,11 +22,7 @@ const displayNoteNodes = () => {
   for (let i = 0; i < sortedNotes.length; i++) {
     const noteDiv = document.createElement("div");
     noteDiv.innerHTML = `
-<<<<<<< HEAD
       <p class="note-listitem" id="note_${sortedNotes[i].id}" onclick="showNoteDetails(${sortedNotes[i].id})">${sortedNotes[i].title}</p>
-=======
-      <p class="note-listitem" id="note_${notes[i].id}" onclick="showNoteDetails(${notes[i].id})">${notes[i].title}</p>
->>>>>>> 73622d45f48be5f0da61123dc3f87e6420c33ec0
     `;
     root.appendChild(noteDiv);
   }

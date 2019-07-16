@@ -1,5 +1,4 @@
 # Setup
-
 ``
-gulp browser sync
+gulp browser-sync
 `` 
