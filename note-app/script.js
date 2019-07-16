@@ -22,7 +22,7 @@ const displayNoteNodes = () => {
   for (let i = 0; i < sortedNotes.length; i++) {
     const noteDiv = document.createElement("div");
     noteDiv.innerHTML = `
-      <p class="note-listitem" id="note_${notes[i].id}" onclick="showNoteDetails(${notes[i].id})">${notes[i].title}</p>
+      <p class="note-listitem" id="note_${sortedNotes[i].id}" onclick="showNoteDetails(${sortedNotes[i].id})">${sortedNotes[i].title}</p>
     `;
     root.appendChild(noteDiv);
   }
@@ -33,19 +33,35 @@ const newNote = () => {
     (acc, current) => (acc < current.id ? current.id : acc),
     0
   );
-  notes.push({ id: ++last, title: "New note" });
+  notes.push({ id: ++last, title: "New note", content: "" });
   displayNoteNodes();
+  console.log(notes);
 };
 
 const showNoteDetails = (id) => {
+  let previousSelected = document.querySelector('note-listitem-seleted');
+  console.log(previousSelected)
+  if (previousSelected !== null) {
+    previousSelected.className = 'note-listitem';
+  }
+
+  document.getElementById(`note_${id}`).className = 'note-listitem-selected';
   let note = notes.find(n => n.id === id);
-  document.getElementById('note-title').innerHTML = `<input type="text" value="${note.title}"></input>`;
-  document.getElementById('note-content').innerHTML = `<p>${note.content}</p>`;
-  document.getElementById('note-controls').innerHTML = `<button onclick="saveNote(${note.id})">Save</button>`;
+  document.getElementById('note-title').value = note.title;
+  document.getElementById('note-content').value = note.content;
+  let saveDiv = document.getElementById('save-note');
+  saveDiv.innerHTML = `<button>Save</button>`;
+  saveDiv.querySelector('button').addEventListener('click', () => saveNote(note.id));
+  document.getElementById('details').style.display = '';
 }
 
 const saveNote = (id) => {
+  console.log(`id = ${id}`);
   let i = notes.findIndex(n => n.id === id);
-  notes[i] = { id: id, title: document.getElementById('note-title').value, content: document.getElementById('note-content').value };
+  console.log(`i = ${i}`);
+  notes[i].title = document.getElementById('note-title').value;
+  notes[i].content = document.getElementById('note-content').value;
+  document.getElementById('details').style.display = 'none';
+  console.log(notes);
   displayNoteNodes();
 }

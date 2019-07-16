@@ -27,3 +27,19 @@
 .note-listitem:hover {
   background: lightgrey;
 }
+
+.note-listitem-selected {
+  border-bottom: 1px solid lightcoral;
+  background: rgba(240, 128, 128, 0.1);
+}
+
+#note-title {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid lightgray;
+}
+
+#note-content {
+  width: 100%;
+  border: none;
+}
