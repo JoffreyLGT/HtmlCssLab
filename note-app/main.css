@@ -6,7 +6,8 @@
 #content {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 2;
+  grid-template-rows: auto 1fr;
+  grid-gap: 10px;
 }
 
 #controls {
@@ -17,6 +18,12 @@
 #notes {
   grid-row: 2;
   grid-column: 1;
+  vertical-align: top;
+}
+
+#notes p {
+  padding: 6px;
+  margin: 0;
 }
 
 #details {
@@ -42,4 +49,9 @@
 #note-content {
   width: 100%;
   border: none;
+}
+
+#details {
+  display: none;
+  height: 90vh;
 }

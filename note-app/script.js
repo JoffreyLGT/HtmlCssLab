@@ -15,14 +15,14 @@ const deleteNoteNodes = () => {
   }
 };
 
-const displayNoteNodes = () => {
+const displayNoteNodes = (selectedId) => {
   deleteNoteNodes();
   const sortedNotes = notes.sort((a, b) => a.id < b.id);
   let root = document.getElementById("notes");
   for (let i = 0; i < sortedNotes.length; i++) {
     const noteDiv = document.createElement("div");
     noteDiv.innerHTML = `
-      <p class="note-listitem" id="note_${sortedNotes[i].id}" onclick="showNoteDetails(${sortedNotes[i].id})">${sortedNotes[i].title}</p>
+      <p class="${sortedNotes[i].id === selectedId ? 'note-listitem-selected' : 'note-listitem'}" id="note_${sortedNotes[i].id}" onclick="showNoteDetails(${sortedNotes[i].id})">${sortedNotes[i].title}</p>
     `;
     root.appendChild(noteDiv);
   }
@@ -33,14 +33,15 @@ const newNote = () => {
     (acc, current) => (acc < current.id ? current.id : acc),
     0
   );
-  notes.push({ id: ++last, title: "New note", content: "" });
-  displayNoteNodes();
+  let id = ++last;
+  notes.push({ id, title: "New note", content: "" });
+  displayNoteNodes(id);
+  showNoteDetails(id);
   console.log(notes);
 };
 
 const showNoteDetails = (id) => {
-  let previousSelected = document.querySelector('note-listitem-seleted');
-  console.log(previousSelected)
+  let previousSelected = document.querySelector('.note-listitem-selected');
   if (previousSelected !== null) {
     previousSelected.className = 'note-listitem';
   }
@@ -52,16 +53,12 @@ const showNoteDetails = (id) => {
   let saveDiv = document.getElementById('save-note');
   saveDiv.innerHTML = `<button>Save</button>`;
   saveDiv.querySelector('button').addEventListener('click', () => saveNote(note.id));
-  document.getElementById('details').style.display = '';
+  document.getElementById('details').style.display = 'block';
 }
 
 const saveNote = (id) => {
-  console.log(`id = ${id}`);
   let i = notes.findIndex(n => n.id === id);
-  console.log(`i = ${i}`);
   notes[i].title = document.getElementById('note-title').value;
   notes[i].content = document.getElementById('note-content').value;
-  document.getElementById('details').style.display = 'none';
-  console.log(notes);
-  displayNoteNodes();
+  displayNoteNodes(id);
 }
