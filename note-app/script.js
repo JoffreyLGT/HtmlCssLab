@@ -49,16 +49,15 @@ const showNoteDetails = (id) => {
   document.getElementById(`note_${id}`).className = 'note-listitem-selected';
   let note = notes.find(n => n.id === id);
   document.getElementById('note-title').value = note.title;
-  document.getElementById('note-content').value = note.content;
+  document.querySelector('#note-content textarea').value = note.content;
   let saveDiv = document.getElementById('save-note');
   saveDiv.innerHTML = `<button>Save</button>`;
   saveDiv.querySelector('button').addEventListener('click', () => saveNote(note.id));
-  document.getElementById('details').style.display = 'block';
 }
 
 const saveNote = (id) => {
   let i = notes.findIndex(n => n.id === id);
   notes[i].title = document.getElementById('note-title').value;
-  notes[i].content = document.getElementById('note-content').value;
+  notes[i].content = document.getElementById('#note-content textarea').value;
   displayNoteNodes(id);
 }

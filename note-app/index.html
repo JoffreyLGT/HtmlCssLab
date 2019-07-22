@@ -24,14 +24,14 @@
   </header>
   <div id="content" class="container">
     <div id="controls">
-      <button onclick="newNote()">
+      <button class="btn btn-success" onclick="newNote()">
         <i class="fas fa-plus-circle"></i> New note
       </button>
     </div>
     <div id="notes"></div>
-    <div id="details">
-      <input type="text" id="note-title"></input>
-      <textarea id="note-content" rows="15"></textarea>
+    <input type="text" id="note-title"></input>
+    <div id="note-content">
+      <textarea rows="15"></textarea>
       <div id="save-note"></div>
     </div>
   </div>
