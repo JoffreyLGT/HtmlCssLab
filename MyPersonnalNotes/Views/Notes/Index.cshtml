@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="content" class="container-fluid">
+    <div id="controls">
+        <button class="btn btn-success" onclick="newNote()">
+        <i class="fas fa-plus-circle"></i> New note
+        </button>
+    </div>
+    <div id="notes"></div>
+    <input type="text" class="no-focus" id="note-title" />
+    <div id="note-content">
+        <textarea class="no-focus"></textarea>
+        <div id="save-note"></div>
+    </div>
+</div>
+<script src="~/js/notes.js"></script>
