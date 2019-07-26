@@ -1,9 +1,10 @@
 {
   "name": "note-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple plain text note app",
+  "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.7",
+    "electron": "^5.0.8",
     "gulp": "^4.0.2"
   }
 }
