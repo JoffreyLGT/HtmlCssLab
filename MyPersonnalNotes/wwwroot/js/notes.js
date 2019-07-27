@@ -1,14 +1,15 @@
+import { ReadNotes, ReadNote, CreateNote, UpdateNote } from "./ApiRequester.js";
+
 // We want to display the note after the page is loaded
 addEventListener("load", () => {
+  console.log(window);
+  window.displayNoteNodes = displayNoteNodes;
+  window.newNote = newNote;
+  window.showNoteDetails = showNoteDetails;
+  window.saveAfterTimeout = saveAfterTimeout;
+  window.deleteNoteNodes = deleteNoteNodes;
   displayNoteNodes();
 });
-
-// TODO Create a file to old the data and the its interaction
-const notes = [
-  { id: 1, title: "My first beautiful note", content: "first hello world" },
-  { id: 2, title: "My second beautiful note", content: "second hello world" },
-  { id: 3, title: "A very long note", content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\n\n\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!\n\n\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ut laboriosam fuga molestiae laborum, aliquid voluptatum necessitatibus temporibus quidem facere nihil ab quo doloribus unde! Inventore, aspernatur. Reprehenderit, magnam incidunt!" }
-];
 
 const deleteNoteNodes = () => {
   let root = document.getElementById("notes");
@@ -19,7 +20,7 @@ const deleteNoteNodes = () => {
 
 const displayNoteNodes = (selectedId) => {
   deleteNoteNodes();
-  const sortedNotes = notes.sort((a, b) => a.id < b.id);
+  const sortedNotes = ReadNotes().sort((a, b) => a.id < b.id);
   let root = document.getElementById("notes");
   for (let i = 0; i < sortedNotes.length; i++) {
     const noteDiv = document.createElement("div");
@@ -31,12 +32,7 @@ const displayNoteNodes = (selectedId) => {
 };
 
 const newNote = () => {
-  let last = notes.reduce(
-    (acc, current) => (acc < current.id ? current.id : acc),
-    0
-  );
-  let id = ++last;
-  notes.push({ id, title: "New note", content: "" });
+  let id = CreateNote();
   displayNoteNodes(id);
   showNoteDetails(id);
 };
@@ -47,7 +43,8 @@ const showNoteDetails = (id) => {
     previousSelected.className = 'note-listitem';
   }
 
-  let note = notes.find(n => n.id === id);
+
+  let note = ReadNote(id);
   document.getElementById('note-title').value = note.title;
   document.querySelector('#note-content textarea').value = note.content;
 
@@ -76,9 +73,11 @@ const saveAfterTimeout = (id, $note, timeInMs) => {
   globalTimeout = setTimeout(function () {
     globalTimeout = null;
     $note.innerHTML = title;
-    let i = notes.findIndex(n => n.id === id);
-    notes[i].title = title;
-    notes[i].content = document.querySelector('#note-content textarea').value;
+
+    UpdateNote({
+      title,
+      content: document.querySelector('#note-content textarea').value
+    });
 
   }, timeInMs);
 }
