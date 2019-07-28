@@ -28,6 +28,6 @@ function UpdateNote(note) {
 
   let i = notes.findIndex(n => n.id === id);
   notes[i].title = title;
-  notes[i].content = document.querySelector('#note-content textarea').value;
+  notes[i].content = content;
 }
 export { ReadNotes, ReadNote, CreateNote, UpdateNote };

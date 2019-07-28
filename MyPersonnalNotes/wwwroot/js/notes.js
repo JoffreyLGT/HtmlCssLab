@@ -1,8 +1,10 @@
-import { ReadNotes, ReadNote, CreateNote, UpdateNote } from "./ApiRequester.js";
+import { ReadNotes, ReadNote, CreateNote, UpdateNote } from "./utils/ApiRequester.js";
 
-// We want to display the note after the page is loaded
+/**
+ * Register all the functions in the window object to make them usable.
+ * Trigger displayNoteNodes().
+ */
 addEventListener("load", () => {
-  console.log(window);
   window.displayNoteNodes = displayNoteNodes;
   window.newNote = newNote;
   window.showNoteDetails = showNoteDetails;
@@ -11,6 +13,9 @@ addEventListener("load", () => {
   displayNoteNodes();
 });
 
+/**
+ * Delete all the note elements in the list.
+ */
 const deleteNoteNodes = () => {
   let root = document.getElementById("notes");
   while (root.childElementCount > 0) {
@@ -18,6 +23,10 @@ const deleteNoteNodes = () => {
   }
 };
 
+/**
+ * Fetch all the notes and display them in the list.
+ * @param {int} selectedId id of the note to set as selected.
+ */
 const displayNoteNodes = (selectedId) => {
   deleteNoteNodes();
   const sortedNotes = ReadNotes().sort((a, b) => a.id < b.id);
@@ -31,18 +40,24 @@ const displayNoteNodes = (selectedId) => {
   }
 };
 
+/**
+ * Create a new empty note and rerender the page.
+ */
 const newNote = () => {
   let id = CreateNote();
   displayNoteNodes(id);
   showNoteDetails(id);
 };
 
+/**
+ * Display the details of selected note.
+ * @param {int} id of the note to display.
+ */
 const showNoteDetails = (id) => {
   let previousSelected = document.querySelector('.note-listitem-selected');
   if (previousSelected !== null) {
     previousSelected.className = 'note-listitem';
   }
-
 
   let note = ReadNote(id);
   document.getElementById('note-title').value = note.title;
@@ -75,6 +90,7 @@ const saveAfterTimeout = (id, $note, timeInMs) => {
     $note.innerHTML = title;
 
     UpdateNote({
+      id,
       title,
       content: document.querySelector('#note-content textarea').value
     });
