@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyPersonnalNotes.Controllers
 {
-    public class NotesController : Controller
+  public class NotesController : Controller
+  {
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+      return View();
     }
+  }
 }
