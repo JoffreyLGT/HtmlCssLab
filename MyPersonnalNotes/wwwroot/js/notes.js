@@ -39,6 +39,7 @@ const displayNoteNodes = async (selectedId) => {
     `;
     root.appendChild(noteDiv);
   }
+  showNoteDetails(sortedNotes[0].id);
 };
 
 /**
@@ -73,6 +74,9 @@ const showNoteDetails = async (id) => {
     // Mandatory to be sure to save when the user select another note.
     element.addEventListener('change', () => saveAfterTimeout(note.id, $selectedNote, 0));
   });
+
+  document.getElementById('delete').addEventListener('click', () => deleteNote(id));
+  document.getElementById('favorite').addEventListener('click', () => setFavorite(id));
 }
 
 /**
@@ -102,3 +106,11 @@ const saveAfterTimeout = (id, $note, timeInMs = 1000) => {
   }, timeInMs);
 }
 var globalTimeout = null; // Mandatory for the function above.
+
+const deleteNote = (id) => {
+  console.log('Delete button clicked');
+}
+
+const setFavorite = (id) => {
+  console.log('Favorite button clicked');
+}
