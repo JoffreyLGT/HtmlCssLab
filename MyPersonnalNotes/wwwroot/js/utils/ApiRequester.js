@@ -33,4 +33,15 @@ async function UpdateNote(note) {
   });
   return response.ok;
 }
-export { ReadNotes, ReadNote, CreateNote, UpdateNote };
+
+async function DeleteNote(id) {
+  if (id == null) {
+    return;
+  }
+  const response = await fetch(`/api/notes/${id}`, {
+    method: 'DELETE'
+  });
+
+  return response.ok;
+}
+export { ReadNotes, ReadNote, CreateNote, UpdateNote, DeleteNote };

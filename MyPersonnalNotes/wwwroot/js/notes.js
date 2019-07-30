@@ -1,4 +1,4 @@
-import { ReadNotes, ReadNote, CreateNote, UpdateNote } from "./utils/ApiRequester.js";
+import { ReadNotes, ReadNote, CreateNote, UpdateNote, DeleteNote } from "./utils/ApiRequester.js";
 
 /**
  * Register all the functions in the window object to make them usable.
@@ -75,8 +75,21 @@ const showNoteDetails = async (id) => {
     element.addEventListener('change', () => saveAfterTimeout(note.id, $selectedNote, 0));
   });
 
-  document.getElementById('delete').addEventListener('click', () => deleteNote(id));
-  document.getElementById('favorite').addEventListener('click', () => setFavorite(id));
+  resetAndAddEventListener(document.getElementById('delete'), 'click', () => deleteNote(id));
+  resetAndAddEventListener(document.getElementById('favorite'), 'click', () => setFavorite(id));
+}
+
+/**
+ * Delete all the event listeners on the element and 
+ * add a new one.
+ * @param {*} $element reference to the element
+ * @param {*} type of event (ex: click)
+ * @param {*} event function to execute when the event is triggered
+ */
+const resetAndAddEventListener = ($element, type, event) => {
+  let $newElement = $element.cloneNode(true);
+  $element.parentNode.replaceChild($newElement, $element);
+  $newElement.addEventListener(type, event);
 }
 
 /**
@@ -108,9 +121,13 @@ const saveAfterTimeout = (id, $note, timeInMs = 1000) => {
 var globalTimeout = null; // Mandatory for the function above.
 
 const deleteNote = (id) => {
-  console.log('Delete button clicked');
+  if (!DeleteNote(id)) {
+    return;
+  }
+  document.getElementById(`note_${id}`).parentElement.remove();
+  document.querySelector('.note-listitem').click();
 }
 
 const setFavorite = (id) => {
-  console.log('Favorite button clicked');
+  console.log(`Favorite button clicked for id ${id}`);
 }
