@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="content" class="container-fluid">
+    <div id="controls">
+        <button class="btn btn-success" onclick="newNote()">
+            <i class="fas fa-plus-circle"></i> New note
+        </button>
+    </div>
+    <div id="notes"></div>
+    <div id="options" class="m-2 text-right">
+        <a id="favorite" class="mr-3" style="display:none">
+            <i class="fas fa-star"></i>
+        </a>
+        <a id="delete">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+    </div>
+    <div id="details">
+        <input type="text" class="no-focus" id="note-title" />
+        <div id="note-content">
+            <textarea class="no-focus"></textarea>
+        </div>
+    </div>
+</div>
+<script src="~/js/notes.js" type="module"></script>
