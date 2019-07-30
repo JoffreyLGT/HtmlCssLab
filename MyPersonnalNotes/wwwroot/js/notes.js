@@ -27,9 +27,10 @@ const deleteNoteNodes = () => {
  * Fetch all the notes and display them in the list.
  * @param {int} selectedId id of the note to set as selected.
  */
-const displayNoteNodes = (selectedId) => {
+const displayNoteNodes = async (selectedId) => {
   deleteNoteNodes();
-  const sortedNotes = ReadNotes().sort((a, b) => a.id < b.id);
+  const notes = await ReadNotes()
+  const sortedNotes = notes.sort((a, b) => a.id < b.id);
   let root = document.getElementById("notes");
   for (let i = 0; i < sortedNotes.length; i++) {
     const noteDiv = document.createElement("div");
@@ -53,13 +54,13 @@ const newNote = () => {
  * Display the details of selected note.
  * @param {int} id of the note to display.
  */
-const showNoteDetails = (id) => {
+const showNoteDetails = async (id) => {
   let previousSelected = document.querySelector('.note-listitem-selected');
   if (previousSelected !== null) {
     previousSelected.className = 'note-listitem';
   }
 
-  let note = ReadNote(id);
+  let note = await ReadNote(id);
   document.getElementById('note-title').value = note.title;
   document.querySelector('#note-content textarea').value = note.content;
 
@@ -79,22 +80,25 @@ const showNoteDetails = (id) => {
  * 
  * @param {id} string id of the element in the dom
  * @param {$note} nodeelement reference to the node in the list of notes
+ * @param {timeInMs} int time to wait before saving the note
  */
-const saveAfterTimeout = (id, $note, timeInMs) => {
+const saveAfterTimeout = (id, $note, timeInMs = 1000) => {
   if (globalTimeout != null) {
     clearTimeout(globalTimeout);
   }
   let title = document.getElementById('note-title').value;
-  globalTimeout = setTimeout(function () {
+  globalTimeout = setTimeout(async function () {
     globalTimeout = null;
-    $note.innerHTML = title;
-
-    UpdateNote({
+    const response = await UpdateNote({
       id,
       title,
       content: document.querySelector('#note-content textarea').value
     });
-
+    if (response) {
+      $note.innerHTML = title;
+    } else {
+      console.error("An error occured while saving the note.");
+    }
   }, timeInMs);
 }
 var globalTimeout = null; // Mandatory for the function above.
