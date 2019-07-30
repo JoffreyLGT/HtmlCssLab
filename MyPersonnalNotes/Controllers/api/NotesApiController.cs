@@ -69,5 +69,15 @@ namespace MyPersonnalNotes.Controllers.Api
       }
       return Ok(updatedNote);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteNote(int id)
+    {
+      if (await _data.DeleteNote(id))
+      {
+        return Ok();
+      }
+      return NotFound();
+    }
   }
 }
