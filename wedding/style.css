@@ -1,0 +1,213 @@
+body {
+  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  margin: 0;
+  font-weight: 500;
+  color: #333;
+  line-height: 2em;
+}
+
+#header-layer section {
+  width: 100%;
+  padding: 10vw 0 10vw 0;
+}
+
+#header-layer section h1, #header-layer section h6 {
+  margin: 0 5vw;
+}
+
+h1, h6 {
+  padding-bottom: 10px;
+  color: #333;
+  text-shadow: 1px 1px lightgray;
+}
+
+h1 {
+  font-size: 8vw;
+  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.3em;
+}
+
+h2 {
+  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  font-size: 50px;
+  line-height: 1.5em;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+h3 {
+  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1.3em;
+  color: #333;
+  font-weight: 500;
+}
+
+h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5vw;
+  line-height: 2em;
+  font-size: 14px;
+}
+
+p {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.top-bloc {
+  margin-top: 80px;
+  margin-bottom: -170px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1080px;
+}
+
+.container-full {
+  margin-left: 80px;
+  margin-right: 80px;
+}
+
+.container-big {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1500px;
+}
+
+#header-layer {
+  background-image: url(img/top-layer.png);
+  width: 100%;
+  position: relative;
+  max-width: 100%;
+}
+
+#header-picture {
+  background-image: url(./img/selfie.jpg);
+  background-position: 50% 55%;
+  background-size: cover;
+  position: relative;
+}
+
+#story {
+  padding-top: 315px;
+  background-color: #f8f4f3 !important;
+}
+
+#story>.container {
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 1fr 466px;
+}
+
+#story-text {
+  grid-column: 1;
+}
+
+#story-pictures {
+  grid-column: 2;
+  display: inline;
+  position: relative;
+  background-color: rgba(138, 178, 211, 0.24);
+}
+
+#story-image-bg {
+  background-size: contain;
+  background-position: bottom center;
+  background-image: url(img/engagement-bg.png);
+  width: 100%;
+  height: 233px;
+  margin-top: -69px;
+}
+
+#story-image-1 {
+  width: 60%;
+  height: 74%;
+  z-index: 2;
+  background-size: cover;
+  background-position: bottom center;
+  background-image: url(img/header.jpg);
+  position: relative;
+  bottom: 5%;
+}
+
+#story-image-2 {
+  width: 50%;
+  height: 55%;
+  z-index: 3;
+  background-size: cover;
+  background-position: bottom center;
+  background-image: url(img/header.jpg);
+  position: absolute;
+  bottom: 45%;
+  left: 50%;
+}
+
+#story-text p {
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 2em;
+  margin-right: 42px;
+}
+
+.shadow {
+  box-shadow: 0px 40px 200px -20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+#grooms {
+  background-color: #f8f4f3 !important;
+}
+
+#him {
+  background: #E9E1DE;
+  padding-top: 64px;
+  margin-top: -10px;
+}
+
+#her {
+  background-image: url("img/her.jpg");
+  background-size: cover;
+}
+
+#him, #her {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 50px
+}
+
+#grooms-header {
+  height: 280px;
+  margin-top: 100px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-top: 10px solid #333;
+  padding: 60px 40px;
+}
+
+#grooms #him-introduction {
+  margin-right: -20px;
+}
+
+#grooms #her-introduction {
+  margin-left: -20px;
+}
+
+#him-picture {
+  background-image: url(img/him.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+#her-picture {
+  background-image: url(img/top-layer.png);
+  background-position: left center;
+  background-size: cover;
+}
