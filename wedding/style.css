@@ -243,7 +243,7 @@ p {
 #us-top-right {
   background-size: initial;
   background-position: top right;
-  background-image: url(https://ervetkiolein.ee/wp-content/uploads/2019/03/wedding_engagement_15.png);
+  background-image: url(img/dotted-square.png);
   height: 100%;
   background-repeat: no-repeat;
   margin-right: 44%;
@@ -277,7 +277,7 @@ p {
 #us-bottom-left div {
   background-size: initial;
   background-position: bottom left;
-  background-image: url(https://ervetkiolein.ee/wp-content/uploads/2019/03/wedding_engagement_15.png);
+  background-image: url(img/dotted-square.png);
   background-repeat: no-repeat;
   width: 100%;
   padding-bottom: 26%;
