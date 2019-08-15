@@ -1,5 +1,5 @@
 body {
-  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  font-family: "Prata", Georgia, "Times New Roman", serif;
   margin: 0;
   font-weight: 500;
   color: #333;
@@ -11,11 +11,13 @@ body {
   padding: 10vw 0 10vw 0;
 }
 
-#header-layer section h1, #header-layer section h6 {
+#header-layer section h1,
+#header-layer section h6 {
   margin: 0 5vw;
 }
 
-h1, h6 {
+h1,
+h6 {
   padding-bottom: 10px;
   color: #333;
   text-shadow: 1px 1px lightgray;
@@ -23,14 +25,14 @@ h1, h6 {
 
 h1 {
   font-size: 8vw;
-  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  font-family: "Prata", Georgia, "Times New Roman", serif;
   font-weight: 500;
   margin: 0;
   line-height: 1.3em;
 }
 
 h2 {
-  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  font-family: "Prata", Georgia, "Times New Roman", serif;
   font-size: 50px;
   line-height: 1.5em;
   font-weight: 500;
@@ -39,7 +41,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Prata', Georgia, "Times New Roman", serif;
+  font-family: "Prata", Georgia, "Times New Roman", serif;
   font-size: 24px;
   line-height: 1.3em;
   color: #333;
@@ -78,6 +80,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   max-width: 1500px;
+  padding: 54px 0;
 }
 
 #header-layer {
@@ -99,7 +102,7 @@ p {
   background-color: #f8f4f3 !important;
 }
 
-#story>.container {
+#story > .container {
   display: grid;
   grid-template-rows: 1;
   grid-template-columns: 1fr 466px;
@@ -155,16 +158,16 @@ p {
 }
 
 .shadow {
-  box-shadow: 0px 40px 200px -20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 40px 40px -20px rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
 
 #grooms {
-  background-color: #f8f4f3 !important;
+  background-color: #f8f4f3;
 }
 
 #him {
-  background: #E9E1DE;
+  background: #e9e1de;
   padding-top: 64px;
   margin-top: -10px;
 }
@@ -174,15 +177,16 @@ p {
   background-size: cover;
 }
 
-#him, #her {
+#him,
+#her {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-bottom: 50px
+  padding-bottom: 50px;
 }
 
 #grooms-header {
   height: 280px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .card {
@@ -199,6 +203,10 @@ p {
   margin-left: -20px;
 }
 
+#grooms .container-big {
+  padding-bottom: 0;
+}
+
 #him-picture {
   background-image: url(img/him.jpg);
   background-size: cover;
@@ -210,4 +218,87 @@ p {
   background-image: url(img/top-layer.png);
   background-position: left center;
   background-size: cover;
+}
+
+#us{
+  background-color: #f8f4f3;
+}
+
+#us-first-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+  margin-bottom: 54px;
+}
+
+#us-first-grid img {
+  display: block;
+  max-width: 100%;
+}
+
+#us-top-left img {
+  width: 100%;
+}
+
+#us-top-right {
+  background-size: initial;
+  background-position: top right;
+  background-image: url(https://ervetkiolein.ee/wp-content/uploads/2019/03/wedding_engagement_15.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  margin-right: 44%;
+  display: block;
+}
+
+#us-top-right img {
+  width: 314px;
+  height: 314px;
+  margin-top: 76px;
+}
+
+#us h2 {
+  text-align: center;
+  padding: 54px;
+}
+
+#us-second-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 40px;
+  margin-bottom: 27px;
+  padding: 0 100px;
+}
+
+#us-second-grid img {
+  display: block;
+  max-width: 100%;
+}
+
+#us-bottom-left div {
+  background-size: initial;
+  background-position: bottom left;
+  background-image: url(https://ervetkiolein.ee/wp-content/uploads/2019/03/wedding_engagement_15.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-bottom: 26%;
+}
+
+#us-bottom-left img {
+  width: 75%;
+  margin-left: auto;
+}
+
+#us-bottom-center {
+  width: 100%;
+}
+#us-bottom-right {
+  width: 100%;
+}
+#us-bottom-right div {
+  background-size: contain;
+  background-position: bottom center;
+  background-image: url(img/engagement-bg.png);
+  background-color: #fdd6c6;
+  padding-bottom: 90px;
+  width: 95%;
 }
