@@ -317,3 +317,6 @@ p {
 #info-grid div:nth-child(3){
   padding-top:120px;
 }
+#gift{
+  text-align: center;
+}
