@@ -325,8 +325,12 @@ p {
 }
 #gift {
   text-align: center;
+  background-color: #f8f4f3;
 }
-
+#contact{
+  background-color: #f8f4f3;
+  padding-bottom: 150px;
+}
 #contact .container-full {
   background: url(img/contact-background.png);
   background-size: initial;
@@ -347,7 +351,7 @@ p {
 
 #countdown {
   display: grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: 2fr 1fr 2fr 1fr 2fr 1fr 2fr;
 }
 #countdown p {
   font-size: 60px;
