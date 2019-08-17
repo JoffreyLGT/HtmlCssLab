@@ -145,15 +145,15 @@ p {
 }
 
 #story-image-2 {
-  width: 50%;
-  height: 55%;
+  width: 62%;
+  height: 58%;
   z-index: 3;
   background-size: cover;
   background-position: bottom center;
   background-image: url(img/our-story-2.jpg);
   position: absolute;
   bottom: 45%;
-  left: 50%;
+  left: 38%;
 }
 
 #story-text p {
