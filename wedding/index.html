@@ -142,7 +142,7 @@
     </div>
   </div>
   <div id="contact">
-    <div class="container-full">
+    <div class="container-full shadow">
       <div id="counter-box">
         <h4>Time left:</h4>
         <div id="countdown">
@@ -172,9 +172,26 @@
       <h2>We are already waiting to celebrate with you!<br><br>RSVP</h2>
       <div id="contact-form-box">
         <form>
-          <input type="text" name="guest-name" placeholder="Name">
-          <p>Are you coming?</p>
-          <input type="checkbox">
+          <div>
+            <input type="text" id="guest-name" name="guest-name" placeholder="Name" class="clear-input">
+            <label for="guest-name" hidden>You name</label>
+          </div>   
+          <div>
+            <p>Are you coming?</p>
+            <input type="radio" id="guest-answer-yes" name="guest-answer" value="yes" checked>
+            <label for="guest-answer-yes">Yes</label>
+          </div>         
+          <div>
+            <input type="radio" id="guest-answer-no" name="guest-answer" value="no" checked>
+            <label for="guest-answer-no">No</label>
+          </div>
+          <div>
+            <textarea id="additional-info" name="additional-info" class="clear-input" placeholder="Additional information like food allergy"></textarea>
+            <label for="additional-info" hidden>Additional information like food allergy</label>
+          </div>
+          <div>
+            <button type="submit" class="clear-button shadow">Send</button>
+          </div>
         </form>
       </div>
     </div>
